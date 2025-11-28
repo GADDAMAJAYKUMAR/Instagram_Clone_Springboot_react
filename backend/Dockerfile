@@ -1,14 +1,14 @@
-# Use OpenJDK 17 (LTS) as base image
+# Use Eclipse Temurin JDK 17
 FROM eclipse-temurin:17-jdk
 
 # Set working directory
 WORKDIR /app
 
-# Copy your jar
-COPY target/clone-0.0.1-SNAPSHOT.jar app.jar
+# Copy JAR from target folder
+COPY ./target/clone-0.0.1-SNAPSHOT.jar app.jar
 
-# Expose port
+# Expose port 8080
 EXPOSE 8080
 
-# Run the jar
-CMD ["java", "-jar", "app.jar"]
+# Run the JAR
+ENTRYPOINT ["java", "-jar", "app.jar"]
