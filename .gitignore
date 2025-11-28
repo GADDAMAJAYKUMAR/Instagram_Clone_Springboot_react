@@ -1,0 +1,28 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+*.class
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# VS Code
+.vscode/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Spring Boot
+.mvn/
+mvnw
+mvnw.cmd
+
+# OS
+.DS_Store
+Thumbs.db
