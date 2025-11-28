@@ -1,5 +1,5 @@
-# Use OpenJDK 17 (LTS) as base image
-FROM openjdk:17-jdk-slim
+# Use OpenJDK 17 (Temurin) as base image
+FROM eclipse-temurin:17-jdk
 
 # Set working directory
 WORKDIR /app
