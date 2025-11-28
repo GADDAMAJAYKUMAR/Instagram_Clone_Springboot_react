@@ -1,15 +1,14 @@
-# Use a minimal JDK runtime
-FROM eclipse-temurin:21-jre-alpine
+# Use OpenJDK 17 (LTS) as base image
+FROM openjdk:17-jdk-slim
 
-# Set a non‑root user (optional but recommended)
-RUN addgroup -S app && adduser -S -G app app
-USER app
+# Set working directory
+WORKDIR /app
 
-# Copy the jar into the image
-COPY target/*.jar app.jar
+# Copy the Spring Boot jar into the container
+COPY target/clone-0.0.1-SNAPSHOT.jar app.jar
 
-# Expose the default Spring Boot port
+# Expose Spring Boot default port
 EXPOSE 8080
 
-# Run the application
-ENTRYPOINT ["java","-jar","/app.jar"]
+# Run the jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
