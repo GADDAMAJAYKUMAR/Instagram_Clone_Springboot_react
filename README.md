@@ -1,98 +1,161 @@
-Instagram Clone (Spring Boot + React)
-Overview
-A full‑stack Instagram‑like application built with Spring Boot (Java 17) for the backend API and React (Vite) for the frontend. It demonstrates JWT authentication, CRUD operations for posts, comments, likes, and a follow system.
+# 🌟 Instagram Clone — Spring Boot + React (Full-Stack)  
+A modern **Instagram-like social media application** built with **Spring Boot (Java 17)** and **React (Vite)**.  
+This project demonstrates **JWT authentication**, **secure API routing**, and a **fully responsive UI** designed with **Tailwind CSS**.
 
-Features
-User Management: Registration, login, profile view/edit.
-JWT Authentication: Secure API access with token refresh.
-Posts: Create, read, update, delete posts with image support.
-Comments & Likes: Add comments, like/unlike posts.
-Follow System: Follow/unfollow other users, view follower/following lists.
-Feed: Personalized feed showing posts from followed users.
-Health Check: /api/health endpoint for service status.
-In‑Memory DB: H2 database for quick local development.
-Responsive UI: Built with Tailwind CSS and React Icons.
-Tech Stack
-Backend (Spring Boot)
-Java 17
-Spring Boot 3.2.3
-Spring Data JPA – ORM layer
-Spring Security – JWT based security
-Spring Web – REST APIs
-Spring Validation – Request validation
-H2 Database – In‑memory DB for dev
-Lombok – Boilerplate reduction
-JJWT (0.11.5) – JWT creation/validation
-JUnit & Spring Test – Unit/integration testing
-Frontend (React + Vite)
-React 19
-Vite – Fast dev server & bundler
-Tailwind CSS – Utility‑first styling
-Axios – HTTP client
-React Router DOM – SPA routing
-React Icons – Icon library
-ESLint – Linting
-PostCSS & Autoprefixer – CSS processing
-Project Structure
+## 🚀 Features
+
+### 👤 User Management
+- Register & Login  
+- Profile view & edit  
+- Secure session using JWT tokens  
+
+### 🔐 JWT Authentication
+- Access token  
+- Refresh token  
+- Roles and protected routes  
+
+### 📸 Posts
+- Create, update, delete posts  
+- Upload images  
+- View personalized feed  
+
+### ❤️ Likes & 💬 Comments
+- Like/unlike posts  
+- Add comments  
+- Real-time UI updates  
+
+### 👥 Follow System
+- Follow/unfollow users  
+- Show followers & following lists  
+
+### 🩺 Health Check
+`GET /api/health` returns API status  
+
+### 🗄️ Database
+- H2 in-memory database for fast development  
+
+---
+
+## 🏗️ Tech Stack
+
+### ⚙️ Backend — Spring Boot
+| Technology | Description |
+|-----------|-------------|
+| **Java 17** | Language |
+| **Spring Boot 3.2.3** | API framework |
+| Spring Web | REST services |
+| Spring Security | JWT authentication |
+| Spring Data JPA | ORM |
+| H2 Database | In-memory DB |
+| Lombok | Reduce boilerplate |
+| JJWT | JWT token handling |
+
+
+### 🎨 Frontend — React (Vite)
+| Technology | Description |
+|-----------|-------------|
+| **React 19** | UI library |
+| **Vite** | Ultra-fast bundler |
+| Tailwind CSS | Styling |
+| Axios | API requests |
+| React Router DOM | Routing |
+| React Icons | Icons |
+
+
+---
+
+## 📁 Project Structure
+
 springboot/
-├─ backend/          # Spring Boot source
-│   └─ src/main/java/com/instagram/clone/...
-├─ frontend/         # React application (Vite)
-│   ├─ src/
-│   │   ├─ components/   # UI components (PostCard, etc.)
-│   │   ├─ pages/        # Page components (Login, Register, Home, Profile)
-│   │   └─ services/api.js # Axios instance
-│   └─ tailwind.config.js
-└─ README.md          # This file
-Setup & Run Locally
-Prerequisites
-JDK 17
-Node.js (≥ 18) and npm
-Git (optional)
-Backend
-# Navigate to backend
+├── backend/
+│ └── src/main/java/com/instagram/clone/...
+│
+├── frontend/
+│ ├── src/
+│ │ ├── components/ # PostCard, Header, Sidebar
+│ │ ├── pages/ # Login, Register, Home, Profile
+│ │ └── services/api.js # Axios instance
+│ └── tailwind.config.js
+
+
+
+
+
+---
+
+## 🛠️ Setup & Run Locally
+
+### 📌 Prerequisites
+- JDK **17**
+- Node.js **18+**
+- npm
+- Git
+
+---
+
+## 🔙 Backend Setup (Spring Boot)
+```bash
 cd backend
-# Build and run (Maven wrapper is included)
 ./mvnw spring-boot:run
-The API will be available at http://localhost:8080.
+Backend runs at:
+👉 http://localhost:8080
 
-Frontend
-# Navigate to frontend
+🔮 Frontend Setup (React + Vite)
+bash
+Copy code
 cd frontend
-npm install          # install dependencies
-npm run dev          # start dev server (http://localhost:5173)
-The React app proxies API calls to the backend (see 
+npm install
+npm run dev
+Frontend runs at:
+👉 http://localhost:5173
 
-vite.config.js
-).
+The project uses a proxy to forward API requests to backend (see vite.config.js).
 
-API Overview
+📡 API Overview
 Method	Endpoint	Description
-POST	/api/auth/register	Register a new user
-POST	/api/auth/login	Authenticate and receive JWT
-GET	/api/users/{id}	Get user profile
+POST	/api/auth/register	Register a user
+POST	/api/auth/login	Login + JWT
+GET	/api/users/{id}	Get profile
 PUT	/api/users/{id}	Update profile
-POST	/api/posts	Create a post
-GET	/api/posts	List posts (feed)
-POST	/api/posts/{id}/like	Like/unlike a post
+POST	/api/posts	Create post
+GET	/api/posts	Feed posts
+POST	/api/posts/{id}/like	Like/unlike post
 POST	/api/posts/{id}/comment	Add comment
-POST	/api/users/{id}/follow	Follow/unfollow user
+POST	/api/users/{id}/follow	Follow/unfollow
 GET	/api/health	Health check
-Note: All protected routes require an Authorization: Bearer <jwt> header.
 
-Scripts (frontend/package.json)
+🔒 Protected routes must include:
+Authorization: Bearer <token>
+
+📦 Frontend Scripts (package.json)
+json
+Copy code
 "scripts": {
   "dev": "vite",
   "build": "vite build",
   "lint": "eslint .",
   "preview": "vite preview"
 }
-Use npm run build to generate a production bundle (output in dist/).
+Run production build:
 
-Testing
-Backend: Run ./mvnw test.
-Frontend: Linting with npm run lint. (Add Jest/React Testing Library as needed.)
-License
-This project is for educational purposes. Feel free to fork and modify.
+bash
+Copy code
+npm run build
+Output appears in:
+frontend/dist/
 
-Let me know if you’d like any adjustments or additional sections!
+🧪 Testing
+Backend
+bash
+Copy code
+./mvnw test
+Frontend
+bash
+Copy code
+npm run lint
+📘 License
+This project is for educational purposes.
+Feel free to fork, modify, and upgrade it.
+
+
+
